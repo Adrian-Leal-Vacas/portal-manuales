@@ -1,0 +1,32 @@
+[
+  {
+    "id": "magellan-9300i",
+    "nombre": "Magellan 9300i",
+    "aux_pdf": "",
+    "usb_pdf": "pdfs/magellan_9300i_usb.pdf"
+  },
+  {
+    "id": "zebra-mp7000",
+    "nombre": "Zebra MP7000",
+    "aux_pdf": "pdfs/zebra_mp7000_config.pdf",
+    "usb_pdf": "pdfs/zebra_mp7000_config.pdf"
+  },
+  {
+    "id": "gd4590",
+    "nombre": "Datalogic GD4590",
+    "aux_pdf": "",
+    "usb_pdf": "pdfs/gd4590_usb.pdf"
+  },
+  {
+    "id": "zebra-ds4308",
+    "nombre": "Zebra DS4308",
+    "aux_pdf": "pdfs/zebra_ds4308_usb.pdf",
+    "usb_pdf": "pdfs/zebra_ds4308_usb.pdf"
+  },
+  {
+    "id": "gd44XX",
+    "nombre": "Datalogic GD44XX",
+    "aux_pdf": "pdfs/gd44XX_aux_and_usb.pdf",
+    "usb_pdf": "pdfs/gd44XX_aux_and_usb.pdf"
+  }
+]

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal de manuales de configuración de escáneres y dispositivos de lectura.">
+    <meta name="author" content="Adrián Leal Vacas">
+    <meta name="copyright" content="Adrián Leal Vacas">
+    <meta name="theme-color" content="#f4f7fb">
+    <title>Portal de manuales | Configuración técnica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+        <!-- Cabecera común a todas las vistas -->
+        <header class="site-header">
+            <a class="brand" href="#inicio" aria-label="Ir al inicio">
+                <span class="brand-icon">
+                    <img src="./imagenes/layout_set_logo.png" alt="Tier1 Technologies">
+                </span>
+                <span class="brand-text">
+                    <strong>Tier 1 Technologies S.A.</strong>
+                    <small>Documentación técnica</small>
+                </span>
+            </a>
+            <span class="header-label">
+                Centro de configuración
+            </span>
+        </header>
+        <main id="main-content">
+            <!-- VISTA 1: Índice de dispositivos -->
+            <section id="view-home" class="view is-active" aria-labelledby="home-title" aria-hidden="false">
+                <div class="hero">
+                    <span class="eyebrow">CENTRO DE RECURSOS</span>
+                    <h1 id="home-title">Manuales de configuración</h1>
+                    <p>Selecciona un dispositivo para consultar sus instrucciones de conexión y configuración.</p>
+                </div>
+                <div class="search-container">
+                    <label for="device-search">Buscar dispositivo</label>
+                    <div class="search-input-wrapper">
+                        <span class="search-icon" aria-hidden="true">⌕</span>
+                        <input type="search" id="device-search" placeholder="Ej.: Magellan 9300i, Zebra MP7000..." autocomplete="off"
+                            aria-describedby="search-help">
+                    </div>
+                    <p id="search-help" class="search-help">
+                        Escribe el nombre del dispositivo que quieres encontrar.
+                    </p>
+                </div>
+                <section class="latest-manuals" aria-labelledby="latest-manuals-title">
+                    <div class="section-heading">
+                        <div>
+                            <h2 id="latest-manuals-title">Últimos manuales</h2>
+                            <p>Accede rápidamente a los documentos incorporados más recientemente.</p>
+                        </div>
+                        <span id="latest-manuals-count" class="count-badge">0 manuales</span>
+                    </div>
+                    <div id="latest-manuals-grid" class="latest-manuals-grid" aria-live="polite"></div>
+                </section>
+                <div class="section-heading">
+                    <div>
+                        <h2>Dispositivos disponibles</h2>
+                        <p>Selecciona el equipo que necesitas configurar.</p>
+                    </div>
+                    <span id="device-count" class="count-badge">
+                        0 dispositivos
+                    </span>
+                </div>
+                <!-- El catálogo se genera a partir de config.json -->
+                <div id="device-grid" class="device-grid" aria-live="polite"></div>
+            </section>
+            <!-- VISTA 2: Selección del puerto -->
+            <section id="view-ports" class="view" aria-labelledby="ports-title" aria-hidden="true" hidden>
+                <button class="back-link" type="button" data-action="home">
+                    <span aria-hidden="true">←</span>
+                    Volver al inicio
+                </button>
+                <div class="page-heading">
+                    <span class="eyebrow">DISPOSITIVO SELECCIONADO</span>
+                    <h1 id="ports-title">Configuración del dispositivo</h1>
+                    <p>Elige el tipo de conexión para consultar el manual.</p>
+                </div>
+                <div class="port-grid">
+                    <button class="port-card" type="button" data-port="aux">
+                        <span class="port-icon" aria-hidden="true">↔</span>
+                        <span class="port-card-content">
+                            <strong>Configuración puerto AUX</strong>
+                            <small>Consultar manual de conexión AUX</small>
+                        </span>
+                        <span class="port-arrow" aria-hidden="true">→</span>
+                    </button>
+                    <button class="port-card" type="button" data-port="usb">
+                        <span class="port-icon" aria-hidden="true">⌁</span>
+                        <span class="port-card-content">
+                            <strong>Configuración puerto USB</strong>
+                            <small>Consultar manual de conexión USB</small>
+                        </span>
+                        <span class="port-arrow" aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </section>
+            <!-- VISTA 3: Visor y descarga -->
+            <section id="view-manual" class="view" aria-labelledby="manual-title" aria-hidden="true" hidden>
+                <button class="back-link" type="button" data-action="ports">
+                    <span aria-hidden="true">←</span>
+                    Volver a los puertos
+                </button>
+                <div class="page-heading">
+                    <span class="eyebrow">DOCUMENTACIÓN TÉCNICA</span>
+                    <h1 id="manual-title">Manual de configuración</h1>
+                    <p id="manual-description">
+                        Consulta o descarga el documento seleccionado.
+                    </p>
+                </div>
+                <div class="manual-toolbar">
+                    <div class="manual-file">
+                        <span class="pdf-icon" aria-hidden="true">PDF</span>
+                        <div>
+                            <strong id="manual-filename">Manual.pdf</strong>
+                            <small>Documento PDF</small>
+                        </div>
+                    </div>
+                    <a id="download-button" class="button button-primary" href="#" download>
+                        <span aria-hidden="true">↓</span>
+                        Descargar manual PDF
+                    </a>
+                    <a id="open-pdf-button" class="button" href="#" target="_blank" rel="noopener noreferrer">
+                        Abrir PDF si no se muestra
+                    </a>
+                </div>
+                <div class="pdf-container">
+                    <iframe id="pdf-viewer" title="Visor del manual PDF" src="about:blank" loading="lazy"></iframe>
+                </div>
+                <p class="viewer-help">
+                    Si el documento no se muestra, utiliza el botón de descarga
+                    para abrirlo en tu dispositivo.
+                </p>
+            </section>
+            <!-- Estados de carga y errores -->
+            <section id="status-panel" class="status-panel" role="status" aria-live="polite">
+                Cargando catálogo de dispositivos…
+            </section>
+        </main>
+        <footer class="site-footer">
+            <span>Tier 1 Technologies S.A. · Documentación técnica</span>
+            <span>Portal de consulta de manuales PDF</span>
+        </footer>
+    </div>
+</body>
+</html>
